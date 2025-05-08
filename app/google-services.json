@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984516226400",
+    "project_id": "vikkifood-205",
+    "storage_bucket": "vikkifood-205.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984516226400:android:e1eefca508ce42fef78205",
+        "android_client_info": {
+          "package_name": "com.example.vikkifood"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9v83r8vFL3d7sWv5d3oowjKcbptoV4Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
