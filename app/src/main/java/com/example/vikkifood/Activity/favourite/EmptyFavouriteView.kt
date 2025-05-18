@@ -45,7 +45,7 @@ fun EmptyFavouriteView() {
         Text(
             text = "Hãy thêm món ăn yêu thích của bạn để xem ở đây",
             fontSize = 16.sp,
-            color = colorResource(id = R.color.gray),
+            color = colorResource(id = R.color.grey),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 8.dp)
         )

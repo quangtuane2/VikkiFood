@@ -26,6 +26,8 @@ import com.example.vikkifood.R
 fun HeaderSection(
     item: FoodModel,
     numberInCart: Int,
+    isFavourite: Boolean,
+    onFavoriteClick: () -> Unit,
     onBackClick: () -> Unit,
     onIncrement: () -> Unit,
     onDecrement: () -> Unit
@@ -72,10 +74,14 @@ fun HeaderSection(
             start.linkTo(parent.start)
         })
 
-        FavoriteButton(Modifier.constrainAs(fav){
-            top.linkTo(parent.top)
-            end.linkTo(parent.end)
-        })
+        FavoriteButton(
+            isFavourite = isFavourite, // Truyền trạng thái yêu thích
+            onClick = onFavoriteClick,
+            modifier = Modifier.constrainAs(fav){
+                top.linkTo(parent.top)
+                end.linkTo(parent.end)
+            }
+        )
 
         Text(
             text = item.Title,
@@ -124,11 +130,23 @@ private fun BackButton(onclick: () -> Unit, modifier: Modifier = Modifier){
 }
 
 @Composable
-private fun FavoriteButton(modifier: Modifier = Modifier){
+private fun FavoriteButton(
+    isFavourite: Boolean, // Thêm tham số này
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    // Chọn icon dựa trên trạng thái yêu thích
+    val iconRes = if (isFavourite) {
+        R.drawable.fav_filled // Bạn cần thêm icon này vào thư mục res/drawable
+    } else {
+        R.drawable.fav_icon
+    }
+
     Image(
-        painter = painterResource(R.drawable.fav_icon),
-        contentDescription = null,
+        painter = painterResource(iconRes),
+        contentDescription = if (isFavourite) "Remove from favorites" else "Add to favorites",
         modifier = modifier
             .padding(end = 16.dp, top = 48.dp)
+            .clickable { onClick() }
     )
 }

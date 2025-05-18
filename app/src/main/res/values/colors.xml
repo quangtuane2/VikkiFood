@@ -12,4 +12,39 @@
     <color name="grey">#ECECEC</color>
     <color name="darkPurple">#2E4058</color>
     <color name="lightOrange">#FEF4E5</color>
+
+    <!-- Màu chính cho ứng dụng -->
+    <color name="pink">#FF5252</color>
+    <color name="purple">#7B1FA2</color>
+    <color name="lightPurple">#E1BEE7</color>
+
+    <!-- Màu phụ -->
+    <color name="gray">#9E9E9E</color>
+    <color name="lightGray">#E0E0E0</color>
+    <color name="darkGray">#616161</color>
+    <color name="background">#F5F5F5</color>
+
+    <!-- Màu cho màn hình Favourite -->
+    <color name="favourite_background">#FFF8E1</color>
+    <color name="favourite_card_background">#FFFFFF</color>
+    <color name="favourite_icon_active">#FF5252</color>
+    <color name="favourite_icon_inactive">#9E9E9E</color>
+
+    <!-- Màu cho các trạng thái -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FFC107</color>
+    <color name="info">#2196F3</color>
+
+    <!-- Màu cho các nút -->
+    <color name="button_primary">#FF5252</color>
+    <color name="button_secondary">#311B92</color>
+    <color name="button_disabled">#9E9E9E</color>
+
+    <!-- Màu cho văn bản -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_on_secondary">#FFFFFF</color>
 </resources>

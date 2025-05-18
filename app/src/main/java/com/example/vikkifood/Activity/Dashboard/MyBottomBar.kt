@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.vikkifood.Activity.Cart.CartActivity
 import com.example.vikkifood.R
+import com.example.vikkifood.Activity.favourite.FavouriteActivity
 
 @Composable
 @Preview
@@ -38,10 +39,17 @@ fun MyBottomBar(){
                 selected =  (selectedItem == bottomMenuItem.lable),
                 onClick = {
                     selectedItem = bottomMenuItem.lable
-                    if (bottomMenuItem.lable == "Cart") {
-                        context.startActivity(Intent(context, CartActivity::class.java))
-                    }else{
-                        Toast.makeText(context, bottomMenuItem.lable, Toast.LENGTH_SHORT).show()
+                    when (bottomMenuItem.lable) {
+                        "Cart" -> {
+                            context.startActivity(Intent(context, CartActivity::class.java))
+                        }
+                        "Favorite" -> {
+                            // Chuyển hướng đến FavouriteActivity
+                            context.startActivity(Intent(context, FavouriteActivity::class.java))
+                        }
+                        else -> {
+                            Toast.makeText(context, bottomMenuItem.lable, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 },
                 icon = {
