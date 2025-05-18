@@ -38,7 +38,7 @@ fun DeliveryInfoBox(){
     ) {
         InfoItem(
             title = "Your Delivery Address",
-            content = "NY-downtow-no97",
+            content = "NguHanhSon-DaNang",
             icon = painterResource(R.drawable.location)
         )
 

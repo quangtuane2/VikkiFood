@@ -27,23 +27,33 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.vikkifood.Activity.BaseActivity
 import com.example.vikkifood.Activity.Dashboard.MainActivity
+import com.example.vikkifood.Activity.pages.AuthActivity
+import com.example.vikkifood.Activity.pages.AuthViewModel
+import com.example.vikkifood.Activity.pages.MyAppNavigation
 import com.example.vikkifood.R
 
 class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent{
-            SplashScreen(onGetStartedClick = {
-                startActivity(Intent(this, MainActivity::class.java))
-            })
+        setContent {
+            SplashScreen(
+                onLoginClick = {
+                    startActivity(Intent(this, AuthActivity::class.java))
+                },
+                onGetStartedClick = {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+            )
         }
+
     }
 }
 
 @Composable
 @Preview
-fun SplashScreen(onGetStartedClick:() -> Unit = {}) {
+fun SplashScreen(onLoginClick: () -> Unit = {},
+                 onGetStartedClick: () -> Unit = {}) {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(R.color.darkBrown))
@@ -80,7 +90,7 @@ fun SplashScreen(onGetStartedClick:() -> Unit = {}) {
             withStyle(style = SpanStyle(color = colorResource(R.color.orange))){
                 append("food\nparadis ")
             }
-            append(" exprience food perfection delivered")
+            append("exprience food perfection delivered")
         }
         Text(
             text = styledText,
@@ -100,11 +110,12 @@ fun SplashScreen(onGetStartedClick:() -> Unit = {}) {
                 .padding(16.dp)
         )
 
-        GetStartedButton(
-            onClick = onGetStartedClick,
-            modifier = Modifier
-                .padding(top = 16.dp)
 
+        GetStartedButton(
+            onLoginClick = onLoginClick,
+            onGetStartedClick = onGetStartedClick,
+            modifier = Modifier.padding(top = 16.dp)
         )
     }
 }
+
