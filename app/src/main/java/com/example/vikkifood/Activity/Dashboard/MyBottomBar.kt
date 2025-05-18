@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.vikkifood.Activity.Cart.CartActivity
+import com.example.vikkifood.Activity.pages.ProfileActivity
 import com.example.vikkifood.R
 import com.example.vikkifood.Activity.favourite.FavouriteActivity
 
@@ -36,7 +37,7 @@ fun MyBottomBar(){
     ) {
         bottomMenuItemsList.forEach{bottomMenuItem ->
             BottomNavigationItem(
-                selected =  (selectedItem == bottomMenuItem.lable),
+                selected = (selectedItem == bottomMenuItem.lable),
                 onClick = {
                     selectedItem = bottomMenuItem.lable
                     when (bottomMenuItem.lable) {
@@ -46,6 +47,10 @@ fun MyBottomBar(){
                         "Favorite" -> {
                             // Chuyển hướng đến FavouriteActivity
                             context.startActivity(Intent(context, FavouriteActivity::class.java))
+                        }
+                        "Profile" -> {
+                            // Chuyển hướng đến ProfileActivity
+                            context.startActivity(Intent(context, ProfileActivity::class.java))
                         }
                         else -> {
                             Toast.makeText(context, bottomMenuItem.lable, Toast.LENGTH_SHORT).show()
@@ -80,4 +85,3 @@ fun prepareBottomMenu():List<BottomMenuItem>{
 
     return bottomMenuItemList
 }
-
