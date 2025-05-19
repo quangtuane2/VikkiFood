@@ -30,6 +30,12 @@ import com.example.vikkifood.Activity.BaseActivity
 import com.example.vikkifood.Helper.ManagmentCart
 import com.example.vikkifood.R
 import java.util.ArrayList
+// Thêm import cho AlertDialog
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text as Material3Text
+import androidx.compose.ui.graphics.Color
 
 class CartActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +53,35 @@ fun CartScreen(managmentCart: ManagmentCart = ManagmentCart(LocalContext.current
 ){
     val cartItem = remember{ mutableStateOf(managmentCart.getListCart()) }
     val tax = remember{ mutableStateOf(0.0) }
+    // Thêm state để hiển thị dialog thông báo
+    val showSuccessDialog = remember { mutableStateOf(false) }
+
     calculatorCart(managmentCart, tax)
+
+    // Thêm dialog thông báo thanh toán thành công
+    if (showSuccessDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                showSuccessDialog.value = false
+                // Cập nhật lại giỏ hàng sau khi đóng dialog
+                cartItem.value = managmentCart.getListCart()
+            },
+            title = { Material3Text("Thanh toán thành công") },
+            text = { Material3Text("Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn sẽ được giao trong thời gian sớm nhất.") },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showSuccessDialog.value = false
+                        // Cập nhật lại giỏ hàng sau khi đóng dialog
+                        cartItem.value = managmentCart.getListCart()
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.orange))
+                ) {
+                    Material3Text("OK", color = Color.White)
+                }
+            }
+        )
+    }
 
     LazyColumn(modifier = Modifier
         .fillMaxWidth()
@@ -75,61 +109,66 @@ fun CartScreen(managmentCart: ManagmentCart = ManagmentCart(LocalContext.current
                         .clickable { onBackClick() }
                 )
             }}
-            if (cartItem.value.isEmpty()){
-                item{
-                    Text(
-                        text = "Cart Is Empty",
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                            .fillMaxWidth(),
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }else{
-                items(cartItem.value){ item ->
-                    CartItem(
-                        cartItems = cartItem.value,
-                        item = item,
-                        managmentCart = managmentCart,
-                        onItemChange = {
-                            calculatorCart(managmentCart, tax)
-                            cartItem.value = ArrayList(managmentCart.getListCart())
-                        }
-                    )
-                }
-
-                item {
-                    Text(
-                        text = "Order Summary",
-                        color = colorResource(R.color.darkPurple),
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
-                }
-
-                item {
-                    CartSummary(
-                        itemTotal = managmentCart.getTotalFee(),
-                        tax = tax.value,
-                        delivery = 10.0
-                    )
-                }
-
-                item {
-                    Text(
-                        text = "Information",
-                        color = colorResource(R.color.darkPurple),
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
-                }
-
-                item {
-                    DeliveryInfoBox()
-                }
+        if (cartItem.value.isEmpty()){
+            item{
+                Text(
+                    text = "Cart Is Empty",
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
             }
+        }else{
+            items(cartItem.value){ item ->
+                CartItem(
+                    cartItems = cartItem.value,
+                    item = item,
+                    managmentCart = managmentCart,
+                    onItemChange = {
+                        calculatorCart(managmentCart, tax)
+                        cartItem.value = ArrayList(managmentCart.getListCart())
+                    }
+                )
+            }
+
+            item {
+                Text(
+                    text = "Order Summary",
+                    color = colorResource(R.color.darkPurple),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+            }
+
+            item {
+                CartSummary(
+                    itemTotal = managmentCart.getTotalFee(),
+                    tax = tax.value,
+                    delivery = 10.0
+                )
+            }
+
+            item {
+                Text(
+                    text = "Information",
+                    color = colorResource(R.color.darkPurple),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+            }
+
+            item {
+                DeliveryInfoBox(
+                    managmentCart = managmentCart,
+                    onOrderPlaced = {
+                        showSuccessDialog.value = true
+                    }
+                )
+            }
+        }
     }
 }
 

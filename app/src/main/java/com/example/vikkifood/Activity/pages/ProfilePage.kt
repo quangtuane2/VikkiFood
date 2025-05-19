@@ -30,6 +30,8 @@ import androidx.navigation.NavController
 import com.example.vikkifood.Activity.Dashboard.MainActivity
 import com.example.vikkifood.R
 import com.google.firebase.auth.FirebaseAuth
+import com.example.vikkifood.Activity.favourite.FavouriteActivity
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -97,13 +99,12 @@ fun ProfilePage(
             ProfileMenuItem(
                 icon = Icons.Default.Person,
                 title = "Thông tin cá nhân",
-                subtitle = "Cập nhật thông tin cá nhân của bạn"
-            )
-
-            ProfileMenuItem(
-                icon = Icons.Default.LocationOn,
-                title = "Địa chỉ giao hàng",
-                subtitle = "Quản lý địa chỉ giao hàng của bạn"
+                subtitle = "Cập nhật thông tin cá nhân của bạn",
+                onClick = {
+                    // Chuyển đến màn hình thông tin cá nhân
+                    val intent = Intent(context, PersonalInfoActivity::class.java)
+                    context.startActivity(intent)
+                }
             )
 
             // Giữ nguyên các icon đã vẽ
@@ -122,8 +123,15 @@ fun ProfilePage(
             ProfileMenuItem(
                 icon = Icons.Default.Favorite,
                 title = "Món ăn yêu thích",
-                subtitle = "Xem danh sách món ăn yêu thích của bạn"
+                subtitle = "Xem danh sách món ăn yêu thích của bạn",
+                onClick = {
+                    // Chuyển đến màn hình Favourite
+                    val intent = Intent(context, FavouriteActivity::class.java)
+                    context.startActivity(intent)
+                }
             )
+
+
 
             ProfileMenuItem(
                 icon = Icons.Default.Settings,
@@ -221,10 +229,11 @@ fun ProfileHeader(email: String) {
 fun ProfileMenuItem(
     icon: androidx.compose.ui.graphics.vector.ImageVector,
     title: String,
-    subtitle: String
+    subtitle: String,
+    onClick: () -> Unit = {}
 ) {
     Card(
-        onClick = { /* Xử lý khi nhấp vào mục */ },
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
@@ -288,10 +297,11 @@ fun ProfileMenuItem(
 fun ProfileMenuItemWithDrawable(
     iconRes: Int,
     title: String,
-    subtitle: String
+    subtitle: String,
+    onClick: () -> Unit = {}
 ) {
     Card(
-        onClick = { /* Xử lý khi nhấp vào mục */ },
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),

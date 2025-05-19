@@ -1,5 +1,6 @@
 package com.example.vikkifood.Activity.Dashboard
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -19,11 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
+import com.example.vikkifood.Activity.Notification.NotificationActivity
 import com.example.vikkifood.R
 
-@Composable
 @Preview
-fun TopBar(){
+@Composable
+fun TopBar(navController: NavController? = null){
+    val context = LocalContext.current
     ConstraintLayout(modifier = Modifier
         .padding(top = 48.dp)
         .padding(horizontal = 16.dp)
@@ -72,7 +77,10 @@ fun TopBar(){
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                     end.linkTo(parent.end)
-                }.clickable {  }
+                }.clickable {
+                    val intent = Intent(context, NotificationActivity::class.java)
+                    context.startActivity(intent) // 👈 Phải gọi để mở activity
+                }
         )
     }
 }

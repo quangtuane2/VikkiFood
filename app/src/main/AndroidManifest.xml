@@ -49,6 +49,12 @@
             android:name=".Activity.pages.ProfileActivity"
             android:exported="true"
             android:theme="@style/Theme.VikkiFood" />
+        <activity android:name=".Activity.Notification.NotificationActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VikkiFood" />
+        <activity
+            android:name=".Activity.pages.PersonalInfoActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
