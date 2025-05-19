@@ -45,6 +45,10 @@
             android:name=".Activity.pages.AuthActivity"
             android:exported="true"
             android:theme="@style/Theme.VikkiFood" />
+        <activity
+            android:name=".Activity.pages.ProfileActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VikkiFood" />
     </application>
 
 </manifest>

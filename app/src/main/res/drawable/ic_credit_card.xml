@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+
+    <!-- Thân thẻ chính màu cam -->
+    <path
+        android:pathData="M10,10 H110 A10,10 0 0,1 110,70 H10 A10,10 0 0,1 10,10 Z"
+        android:fillColor="#FF6D00" />
+
+    <!-- Dải ngang trắng mô phỏng sọc bạc/chữ -->
+    <path
+        android:pathData="M15,25 H105 V35 H15 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Dải ngang sáng hơn -->
+    <path
+        android:pathData="M15,45 H90 V55 H15 Z"
+        android:fillColor="#FFB74D" />
+
+    <!-- Chip thẻ - hình chữ nhật bo góc màu vàng nhạt -->
+    <path
+        android:pathData="M95,30 h15 a5,5 0 0,1 5,5 v10 a5,5 0 0,1 -5,5 h-15 a5,5 0 0,1 -5,-5 v-10 a5,5 0 0,1 5,-5 z"
+        android:fillColor="#FFD54F" />
+
+</vector>

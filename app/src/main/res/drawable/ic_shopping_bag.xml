@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Viền ngoài túi -->
+    <path
+        android:pathData="M20,80 Q10,50 30,30 H70 Q90,50 80,80 Z"
+        android:strokeColor="#000000"
+        android:strokeWidth="6"
+        android:fillColor="@android:color/transparent" />
+
+    <!-- Thân túi (fill màu) -->
+    <path
+        android:pathData="M25,75 Q15,50 35,35 H65 Q85,50 75,75 Z"
+        android:fillColor="#000000" />
+
+    <!-- Quai túi (nửa vòng cung trên) -->
+    <path
+        android:pathData="M30,30 Q50,10 70,30"
+        android:strokeColor="#000000"
+        android:strokeWidth="6"
+        android:fillColor="@android:color/transparent" />
+
+</vector>

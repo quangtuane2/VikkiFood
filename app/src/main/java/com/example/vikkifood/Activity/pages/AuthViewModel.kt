@@ -13,8 +13,10 @@ class AuthViewModel : ViewModel(){
     val authState: LiveData<AuthState> = _authState
 
     init {
-        auth.signOut()
-        _authState.value = AuthState.Unauthenticated
+//        auth.signOut()
+//        _authState.value = AuthState.Unauthenticated
+        // Thay vì đăng xuất, kiểm tra xem người dùng đã đăng nhập chưa
+        checkAuthStatus()
     }
 
     fun checkAuthStatus(){

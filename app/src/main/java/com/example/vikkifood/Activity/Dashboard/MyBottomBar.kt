@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.vikkifood.Activity.Cart.CartActivity
 import com.example.vikkifood.R
 import com.example.vikkifood.Activity.favourite.FavouriteActivity
+import com.example.vikkifood.Activity.pages.ProfileActivity
 
 @Composable
 @Preview
@@ -46,6 +47,10 @@ fun MyBottomBar(){
                         "Favorite" -> {
                             // Chuyển hướng đến FavouriteActivity
                             context.startActivity(Intent(context, FavouriteActivity::class.java))
+                        }
+                        "Profile" -> {
+                            // Chuyển hướng đến ProfileActivity
+                            context.startActivity(Intent(context, ProfileActivity::class.java))
                         }
                         else -> {
                             Toast.makeText(context, bottomMenuItem.lable, Toast.LENGTH_SHORT).show()
