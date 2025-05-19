@@ -26,9 +26,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.vikkifood.R
+import com.example.vikkifood.Helper.ManagmentCart
 
 @Composable
-fun DeliveryInfoBox(){
+fun DeliveryInfoBox(
+    managmentCart: ManagmentCart = ManagmentCart(androidx.compose.ui.platform.LocalContext.current),
+    onOrderPlaced: () -> Unit = {}
+){
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +54,12 @@ fun DeliveryInfoBox(){
         )
     }
     Button(
-        onClick = {},
+        onClick = {
+            // Xóa giỏ hàng
+            managmentCart.clearCart()
+            // Gọi callback khi đặt hàng thành công
+            onOrderPlaced()
+        },
         shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = colorResource(R.color.orange)

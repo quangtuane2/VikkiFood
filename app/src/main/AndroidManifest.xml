@@ -13,6 +13,10 @@
         android:theme="@style/Theme.VikkiFood"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.pages.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.VikkiFood" />
+        <activity
             android:name=".Activity.favourite.FavouriteActivity"
             android:exported="false" />
         <activity
@@ -27,6 +31,10 @@
         <activity
             android:name=".Activity.BaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.pages.PersonalInfoActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Activity.Splash.SplashActivity"
             android:exported="true">

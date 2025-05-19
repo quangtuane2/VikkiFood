@@ -55,4 +55,9 @@ class ManagmentCart(val context: Context) {
         }
         return fee
     }
+
+    // Thêm hàm mới để xóa tất cả sản phẩm trong giỏ hàng
+    fun clearCart() {
+        tinyDB.putListObject("CartList", arrayListOf<FoodModel>())
+    }
 }
